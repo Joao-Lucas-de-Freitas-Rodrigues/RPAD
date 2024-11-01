@@ -46,21 +46,22 @@ for epoca in range(n_epocas):
     mse_gd = np.mean((y - y_pred_gd) ** 2)
     mse_gd_array.append(mse_gd)
 
-    # A cada 50 ele salva o png pra fazer o gif da linha
+    # A cada 50 ele salva o png pra fazer o gif
     if epoca % 50 == 0:
-        filename = f"gd_frame_{epoca}.png"
+        filename = f"images/gd_frame_{epoca}.png"
         plt.figure()
         plt.scatter(X, y, color='blue', label='Pontos')
-        plt.plot(X, w0_gd + w1_gd * X, color='green', label=f'Epoca {epoca}')
+        plt.plot(X, w0_gd + w1_gd * X, color='green', label=f'Linha regressão época: {epoca}')
         plt.xlabel('x')
         plt.ylabel('y')
         plt.legend()
+        plt.title('GD')
         plt.savefig(filename)
         plt.close()
         frames.append(filename)
 
 # GIF do GD
-with imageio.get_writer('gd.gif', mode='I', duration=0.2) as writer:
+with imageio.get_writer('gd.gif', mode='I', duration=0.5) as writer:
     for filename in frames:
         image = imageio.imread(filename)
         writer.append_data(image)
@@ -84,21 +85,22 @@ for epoca in range(n_epocas):
     mse_sgd = np.mean((y - y_pred_sgd_all) ** 2)
     mse_sgd_list.append(mse_sgd)
 
-    # A cada 50 ele salva o png pra fazer o gif da linha
+    # A cada 50 ele salva o png pra fazer o gif
     if epoca % 50 == 0:
-        filename = f"sgd_frame_{epoca}.png"
+        filename = f"images/sgd_frame_{epoca}.png"
         plt.figure()
         plt.scatter(X, y, color='blue', label='Pontos')
-        plt.plot(X, y_pred_sgd_all, color='purple', label=f'Epoca {epoca}')
+        plt.plot(X, y_pred_sgd_all, color='purple', label=f'Linha regressão época: {epoca}')
         plt.xlabel('x')
         plt.ylabel('y')
         plt.legend()
+        plt.title('SGD')
         plt.savefig(filename)
         plt.close()
         frames_sgd.append(filename)
 
 # GIF do SGD
-with imageio.get_writer('sgd.gif', mode='I', duration=0.2) as writer:
+with imageio.get_writer('sgd.gif', mode='I', duration=0.5) as writer:
     for filename in frames_sgd:
         image = imageio.imread(filename)
         writer.append_data(image)
