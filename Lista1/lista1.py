@@ -61,7 +61,7 @@ for epoca in range(n_epocas):
         frames.append(filename)
 
 # GIF do GD
-with imageio.get_writer('gd.gif', mode='I', duration=0.5) as writer:
+with imageio.get_writer('gd.gif', mode='I', duration=1) as writer:
     for filename in frames:
         image = imageio.imread(filename)
         writer.append_data(image)
@@ -100,7 +100,7 @@ for epoca in range(n_epocas):
         frames_sgd.append(filename)
 
 # GIF do SGD
-with imageio.get_writer('sgd.gif', mode='I', duration=0.5) as writer:
+with imageio.get_writer('sgd.gif', mode='I', duration=1) as writer:
     for filename in frames_sgd:
         image = imageio.imread(filename)
         writer.append_data(image)
